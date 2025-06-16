@@ -22,9 +22,8 @@ int main(int n, char** argsv){
         double angle = 1.f;
         angle *= 2*PI;
         angle *= (((double)i)/((double)frames));
-        tempModelRotateYFunction(model, angle);
+        model->transform.yaw = angle;
         renderModel(image, model);
-        tempModelRotateYFunction(model, -angle);
         fileHelper((char*) argsv[4], i, image);
     }
     
@@ -66,15 +65,13 @@ void fileHelper(char* name, int frame , Image* image){
 
 
 
-int mai1(){
+int main1(){
     int width = 1920, height = 1080;
-    char name[50] ="coelhodecimated.obj";
-    char prefix[50] = "lion";
+    char name[50] ="cube.obj";
+    char prefix[50] = "cube";
     int frames = 1;
-    
     Image* image = newImage(width, height);
     Model* model = readModelFile(name);
-    Image* texture = openImage("bunny.bmp");
     //printModel(model);
     
     for(int i = 0; i < frames; i++){
@@ -84,7 +81,7 @@ int mai1(){
         
         //tempModelRotateYFunction(model, angle);
         tempModelRotateZFunction(model, angle);
-        //renderModel(image, texture, model);
+        renderModel(image, model);
         char filename[50] = "";
         char extension[50] = "";
         strcat(filename, prefix);
@@ -98,7 +95,6 @@ int mai1(){
     
     
     ImageClose(image);
-    ImageClose(texture);
     closeModel(model);
     model = NULL;
 }

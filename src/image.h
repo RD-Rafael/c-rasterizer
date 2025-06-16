@@ -210,9 +210,9 @@ void renderModel(Image* image, Model* model){
                  B = model->vertices[idx1],
                  C = model->vertices[idx2];
 
-            Double2 A2 = worldToScreen(A, newDouble2(image->width, image->height));
-            Double2 B2 = worldToScreen(B, newDouble2(image->width, image->height));
-            Double2 C2 = worldToScreen(C, newDouble2(image->width, image->height));
+            Double2 A2 = worldToScreen(A, newDouble2(image->width, image->height),  model->transform);
+            Double2 B2 = worldToScreen(B, newDouble2(image->width, image->height),  model->transform);
+            Double2 C2 = worldToScreen(C, newDouble2(image->width, image->height),  model->transform);
             Double3 color = newDouble3((double)rand()/RAND_MAX, (double)rand()/RAND_MAX, (double)rand()/RAND_MAX);
 
             // renderVector(image, A2, B2);

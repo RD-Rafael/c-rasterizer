@@ -20,8 +20,6 @@ typedef struct _Long3{
     long z;
 } Long3;
 
-
-
 Double2 newDouble2(double x, double y){
     Double2 vec;
     vec.x = x;
@@ -76,16 +74,6 @@ Double2 scaleDouble2(Double2 a, double scale){
 Double3 scaleDouble3(Double3 a, double scale){
     return newDouble3(a.x*scale, a.y*scale, a.z*scale);
 }
-
-Double2 worldToScreen(Double3 vertex, Double2 numPixels){
-    double screenHeight_world = 10;
-    double pixelPerWorldUnit = numPixels.y / screenHeight_world;
-
-    Double2 pixelOffset = scaleDouble2(newDouble2(vertex.x, vertex.y), pixelPerWorldUnit);
-    return addDouble2(scaleDouble2(numPixels, .5f), pixelOffset);
-}
-
-
 Double2 divideDouble2(Double2 a, double divisor){
     if(divisor == 0){
         printf("ERROR: Divinding vector by 0");
